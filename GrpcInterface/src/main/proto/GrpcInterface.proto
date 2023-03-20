@@ -6,6 +6,8 @@ option java_package = "org.example.model";
 
 service ExampleService {
   rpc unaryProcedure (TheRequest) returns (TheResponse) {}
+  rpc streamProcedure (TheRequest) returns (stream TheResponse) {}
+  rpc operationProcedure (OperationReq) returns (stream OperationRes) {}
 }
 
 message TheRequest {
@@ -15,4 +17,14 @@ message TheRequest {
 
 message TheResponse {
   string message = 1;
+}
+
+message OperationReq {
+  bool isFib = 1;
+  int32 elementsNr = 2;
+}
+
+message OperationRes {
+  int32 result = 1;
+  int32 resultSqr = 2;
 }
